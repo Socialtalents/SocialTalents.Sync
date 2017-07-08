@@ -15,9 +15,10 @@ namespace SocialTalents.SyncWeb
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseUrls("http://*:80")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseApplicationInsights()
+                //.UseApplicationInsights()
                 .Build();
 
             host.Run();
