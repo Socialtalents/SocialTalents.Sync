@@ -11,7 +11,7 @@ namespace SocialTalents.SyncWeb.Controllers
     {
         // GET: Sync
         [HttpGet]
-        [Route("api/Sync/{id?}")]
+        [Route("Sync/{id?}")]
         public ActionResult Index(string id)
         {
             var model = SyncCollection.Instance.Get(id, -1);
@@ -28,7 +28,7 @@ namespace SocialTalents.SyncWeb.Controllers
         static SyncModel noResult = new SyncModel("no result", -1);
 
         [HttpGet]
-        [Route("api/Sync/Register/{id?}")]
+        [Route("Sync/Register/{id?}")]
         public ActionResult Register(string id, int total, string agentId)
         {
             SyncModel model = SyncCollection.Instance.Get(id, total);
@@ -36,8 +36,8 @@ namespace SocialTalents.SyncWeb.Controllers
         }
 
         [HttpGet]
-        [Route("api/Sync/Wait/{id?}")]
-        [Route("api/Sync/Progress/{id?}")]
+        [Route("Sync/Wait/{id?}")]
+        [Route("Sync/Progress/{id?}")]
         public ActionResult Progress(string id, int total)
         {
             SyncModel model = SyncCollection.Instance.Get(id, total);
