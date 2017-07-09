@@ -10,6 +10,7 @@ yes Y | sudo apt-get install dotnet-dev-1.0.4
 cd /home/ubuntu
 
 # Downloading sources from git, need to create release for tag Stable
+# for private repositories you have to use ssh public key to authenticate
 wget https://github.com/Socialtalents/SocialTalents.Sync/archive/Stable.tar.gz 
 tar -xzvf Stable.tar.gz 
 
@@ -17,4 +18,5 @@ chown -R ubuntu: SocialTalents.Sync-Stable
 chmod -R u+w SocialTalents.Sync-Stable
 
 runuser -l ubuntu -c 'cd SocialTalents.Sync-Stable/SocialTalents.SyncWeb && dotnet restore'
-runuser -l ubuntu -c 'cd SocialTalents.Sync-Stable/SocialTalents.SyncWeb && sudo dotnet run'
+# todo: convert to agent supervisor
+runuser -l ubuntu -c 'cd SocialTalents.Sync-Stable/SocialTalents.SyncWeb && sudo dotnet run -c Release'

@@ -15,7 +15,12 @@ namespace SocialTalents.SyncWeb
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+#if DEBUG
+                .UseUrls("http://*:8000")
+#else
+                // since target is micro instance are not going to use nginx frontend
                 .UseUrls("http://*:80")
+#endif
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 //.UseApplicationInsights()
